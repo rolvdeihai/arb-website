@@ -23,3 +23,8 @@ yarn-debug.log*
 yarn-error.log*
 
 .vercel
+
+# Design template folders
+app-1/
+components-1/
+public-1/
