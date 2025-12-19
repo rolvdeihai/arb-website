@@ -643,12 +643,12 @@ const Home = () => {
                     <div>
                       <h5 className="font-bold text-gray-900 mb-1">Media Sosial</h5>
                       <a 
-                        href="https://www.instagram.com/ptarbofficial" 
+                        href="https://www.instagram.com/anugerah.rekanan/" 
                         target="_blank" 
                         rel="noreferrer"
                         className="text-teal-600 hover:text-teal-700 text-sm sm:text-base font-medium"
                       >
-                        @ptarbofficial
+                        @anugerah.rekanan
                       </a>
                     </div>
                   </div>
