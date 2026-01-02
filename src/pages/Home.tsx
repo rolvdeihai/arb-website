@@ -1,6 +1,55 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import ContactForm from "../components/ContactForm";
+
+// Definisi komponen ContactForm secara lokal untuk menghindari error import
+const ContactForm = () => {
+  return (
+    <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+      <div>
+        <label htmlFor="name" className="block text-sm font-medium text-gray-700">Nama Lengkap</label>
+        <input 
+          type="text" 
+          id="name" 
+          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm p-3 border" 
+          placeholder="Masukkan nama Anda" 
+        />
+      </div>
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+        <input 
+          type="email" 
+          id="email" 
+          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm p-3 border" 
+          placeholder="nama@email.com" 
+        />
+      </div>
+      <div>
+        <label htmlFor="subject" className="block text-sm font-medium text-gray-700">Subjek</label>
+        <input 
+          type="text" 
+          id="subject" 
+          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm p-3 border" 
+          placeholder="Subjek pesan" 
+        />
+      </div>
+      <div>
+        <label htmlFor="message" className="block text-sm font-medium text-gray-700">Pesan</label>
+        <textarea 
+          id="message" 
+          rows={4} 
+          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm p-3 border" 
+          placeholder="Tulis pesan Anda di sini..."
+        />
+      </div>
+      <button 
+        type="submit" 
+        className="w-full inline-flex justify-center rounded-md border border-transparent bg-teal-600 py-3 px-4 text-sm font-bold text-white shadow-lg hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 transition-all transform hover:scale-[1.02]"
+      >
+        Kirim Pesan
+      </button>
+    </form>
+  );
+};
 
 const Home = () => {
   const navigate = useNavigate();
@@ -74,12 +123,12 @@ const Home = () => {
           { 
             step: "01", 
             title: "Visi Strategis", 
-            desc: "Menjadi mitra teknologi terpercaya dalam ekosistem global dengan fokus pada inovasi berkelanjutan dan kolaborasi strategis jangka panjang." 
+            desc: "Menjadi One Stop Outsourcing Solution yang andal dan terpercaya bagi mitra untuk mengembangkan bisnisnya" 
           },
           { 
             step: "02", 
             title: "Misi Berintegritas", 
-            desc: "Membangun jaringan rekanan yang unggul melalui standar etika tinggi, profesionalisme, dan komitmen terhadap keunggulan operasional." 
+            desc: "Mengembangkan sumber daya manusia untuk mencapai performa terbaik dan memberikan solusi terpadu bagi klien dalam mencapai tujuan perusahaan." 
           },
           { 
             step: "03", 
@@ -229,15 +278,15 @@ const Home = () => {
       {/* ABOUT */}
       <section id="about" className="max-w-7xl mx-auto px-4 sm:px-8 mt-20 sm:mt-28 py-10 sm:py-16">
         <h3 className="text-3xl sm:text-4xl font-extrabold text-gray-900 text-center animate-fadeInUp">
-          Tentang ARB
+          Tentang Kami
         </h3>
         <p className="mt-4 sm:mt-6 text-lg sm:text-xl text-gray-700 max-w-5xl mx-auto text-center animate-fadeInUp delay-200">
-          PT. ANUGRAH REKANAN BERSAMA merupakan ekosistem manajemen talenta yang mengintegrasikan prinsip-prinsip 
-          integritas, kualitas, dan efisiensi operasional. Kami berkomitmen untuk menciptakan lingkungan kerja yang 
-          mendukung pengembangan kompetensi, penghargaan terhadap talenta unggul, serta penyediaan peluang pertumbuhan 
-          karir yang berkelanjutan. Keunggulan kami terletak pada platform teknologi mutakhir yang memfasilitasi 
-          tracking rekanan secara real-time, algoritma seleksi berbasis meritokrasi, dan dukungan komprehensif bagi 
-          seluruh stakeholder.
+          Perusahaan kami berdiri sejak tahun 2023,
+          <br /><br />
+          Perusahaan kami Bergerak Dibidang Pemasaran yang membantu para klien kami untuk memasarkan produknya.
+          Kami juga memiliki jaringan relasi yang luas sehingga kami mampu memberukan pelayanan terbaik untuk dapat membantu para klien untuk bisa memasarkan produknya.
+          <br /><br />
+          Perusahaan kami juga selalu memberikan pelayanan yang terbaik untuk semua klien & memastikan memenuhi target yang ingin dicapai.
         </p>
       </section>
 
@@ -322,6 +371,7 @@ const Home = () => {
                     </div>
                   </div>
                   
+                  {/* ... other contact items ... */}
                   <div className="flex items-start gap-3">
                     <div className="w-10 h-10 rounded-full bg-teal-100 flex items-center justify-center flex-shrink-0">
                       <svg className="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -330,10 +380,10 @@ const Home = () => {
                     </div>
                     <div>
                       <p className="font-semibold text-gray-900">Telepon</p>
-                      <p className="text-gray-600 text-sm mt-1">+62 812 3456 7890</p>
+                      <p className="text-gray-600 text-sm mt-1">+62 8136 3358 311</p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start gap-3">
                     <div className="w-10 h-10 rounded-full bg-teal-100 flex items-center justify-center flex-shrink-0">
                       <svg className="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -343,22 +393,6 @@ const Home = () => {
                     <div>
                       <p className="font-semibold text-gray-900">Email</p>
                       <p className="text-gray-600 text-sm mt-1">info@arb-recruitment.co.id</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start gap-3">
-                    <div className="w-10 h-10 rounded-full bg-teal-100 flex items-center justify-center flex-shrink-0">
-                      <svg className="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                      </svg>
-                    </div>
-                    <div>
-                      <p className="font-semibold text-gray-900">Jam Operasional</p>
-                      <p className="text-gray-600 text-sm mt-1">
-                        Senin - Jumat: 08:00 - 17:00<br />
-                        Sabtu: 08:00 - 12:00<br />
-                        Minggu: Libur
-                      </p>
                     </div>
                   </div>
                 </div>
@@ -375,14 +409,6 @@ const Home = () => {
                     <div className="w-2 h-2 rounded-full bg-teal-600"></div>
                     <span>15 menit dari Bandar Udara Radin Inten II</span>
                   </li>
-                  <li className="flex items-center gap-2">
-                    <div className="w-2 h-2 rounded-full bg-teal-600"></div>
-                    <span>20 menit dari Terminal Rajabasa</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <div className="w-2 h-2 rounded-full bg-teal-600"></div>
-                    <span>Tersedia area parkir yang luas</span>
-                  </li>
                 </ul>
               </div>
             </div>
@@ -391,10 +417,7 @@ const Home = () => {
             <div className="lg:col-span-2 animate-fadeInRight">
               <div className="relative h-full min-h-[300px] sm:min-h-[400px] md:min-h-[500px] rounded-2xl overflow-hidden shadow-2xl border border-gray-200">
                 <div className="absolute inset-0 bg-gradient-to-br from-teal-50 to-white/50 z-10 pointer-events-none"></div>
-                
-                {/* Modern Map Container */}
                 <div className="relative w-full h-full">
-                  {/* Map dengan efek modern - Anugerah Rekanan Bersama 2 */}
                   <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3967.0379133193867!2d105.2540838!3d-5.3487085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNcKwMjAnNTUuMyJTIDEwNcKwMTUnMTQuNyJF!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid&q=Perintis+Ruko+Warna+Hijau+Gg+Kesehatan+Rajabasa+Jaya+Bandar+Lampung"
                     width="100%"
@@ -406,48 +429,6 @@ const Home = () => {
                     className="absolute inset-0"
                     title="ARB 2 Office Location"
                   ></iframe>
-                  
-                  {/* Overlay informasi modern */}
-                  <div className="absolute bottom-2 sm:bottom-4 left-2 sm:left-4 right-2 sm:right-4 z-20">
-                    <div className="bg-white/90 backdrop-blur-sm rounded-xl p-3 sm:p-4 shadow-lg max-w-sm">
-                      <div className="flex items-center gap-2 sm:gap-3">
-                        <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-teal-600 flex items-center justify-center flex-shrink-0">
-                          <svg className="w-4 h-4 sm:w-6 sm:h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd"></path>
-                          </svg>
-                        </div>
-                        <div className="min-w-0">
-                          <p className="font-bold text-gray-900 text-sm sm:text-base truncate">Kantor Pusat ARB 2</p>
-                          <p className="text-xs sm:text-sm text-gray-600 truncate">Anugerah Rekanan Bersama 2</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Map Controls Overlay */}
-                  <div className="absolute top-2 sm:top-4 right-2 sm:right-4 z-20">
-                    <div className="flex flex-col sm:flex-row gap-2">
-                      <button 
-                        onClick={() => window.open('https://maps.google.com/?q=Perintis+Ruko+Warna+Hijau+Gg+Kesehatan+Rajabasa+Jaya+Bandar+Lampung+35122', '_blank')}
-                        className="bg-white/90 backdrop-blur-sm px-2 sm:px-3 md:px-4 py-2 rounded-lg shadow-md hover:shadow-lg transition-all hover:bg-white flex items-center justify-center gap-1 sm:gap-2 font-medium text-gray-800 hover:text-teal-700 text-xs sm:text-sm"
-                      >
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
-                        </svg>
-                        <span className="hidden md:inline">Buka di Maps</span>
-                        <span className="md:hidden">Maps</span>
-                      </button>
-                      <button 
-                        onClick={() => window.open('https://www.google.com/maps/dir//Perintis+Ruko+Warna+Hijau+Gg+Kesehatan+Rajabasa+Jaya+Bandar+Lampung+35122', '_blank')}
-                        className="bg-teal-600 text-white px-2 sm:px-3 md:px-4 py-2 rounded-lg shadow-md hover:shadow-lg transition-all hover:bg-teal-700 flex items-center justify-center gap-1 sm:gap-2 font-medium text-xs sm:text-sm"
-                      >
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                        <span>Rute</span>
-                      </button>
-                    </div>
-                  </div>
                 </div>
               </div>
               
@@ -559,8 +540,51 @@ const Home = () => {
         </div>
       </section>
 
-      {/* CONTACT SECTION */}
-      <section id="kontak" className="mt-16 sm:mt-32 py-10 sm:py-16 bg-white px-4 sm:px-8">
+      {/* NASIONAL PRESENCE / MAP SECTION (MOVED UP) */}
+      <section className="py-20 sm:py-24 bg-white px-4 sm:px-8">
+        <div className="max-w-7xl mx-auto text-center">
+          <h3 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 animate-fadeInUp">
+            Hadir Di Berbagai Wilayah Indonesia
+          </h3>
+          
+          <div className="relative w-full max-w-5xl mx-auto mt-12 sm:mt-16 group">
+            {/* Peta menggunakan gambar yang disediakan dengan efek blending */}
+            <img 
+              src="/peta.jpg" 
+              alt="Peta Jangkauan Indonesia" 
+              className="w-full h-auto object-contain mx-auto grayscale hover:grayscale-0 transition-all duration-700 mix-blend-multiply opacity-90"
+            />
+            {/* Titik-titik overlay telah dihapus */}
+          </div>
+
+          {/* STATISTIK DI BAWAH PETA */}
+          <div className="grid grid-cols-2 gap-8 mt-16 max-w-2xl mx-auto">
+            <div className="flex flex-col items-center">
+              <div className="p-4 bg-teal-50 rounded-full shadow-lg mb-4">
+                <svg className="w-8 h-8 sm:w-10 sm:h-10 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                </svg>
+              </div>
+              <div className="text-3xl sm:text-4xl font-extrabold text-gray-900">50+ Area</div>
+              <div className="text-gray-600 mt-2">Yang tersebar diseluruh Indonesia</div>
+            </div>
+
+            <div className="flex flex-col items-center">
+              <div className="p-4 bg-teal-50 rounded-full shadow-lg mb-4">
+                <svg className="w-8 h-8 sm:w-10 sm:h-10 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"></path>
+                </svg>
+              </div>
+              <div className="text-3xl sm:text-4xl font-extrabold text-gray-900">100%</div>
+              <div className="text-gray-600 mt-2">Terpercaya, Fleksibel, Efektif</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CONTACT SECTION (Stay at Bottom) */}
+      <section id="kontak" className="py-16 sm:py-20 bg-teal-50 px-4 sm:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 animate-fadeInUp">
             <h3 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4">
@@ -574,7 +598,7 @@ const Home = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
             {/* Contact Info */}
             <div className="animate-fadeInLeft space-y-6">
-              <div className="bg-teal-50 p-6 sm:p-8 rounded-2xl shadow-lg border border-teal-100">
+              <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-lg border border-teal-100">
                 <h4 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">Informasi Kontak</h4>
                 <div className="space-y-5">
                   <div className="flex items-start gap-4">
@@ -593,7 +617,7 @@ const Home = () => {
                       </p>
                     </div>
                   </div>
-                  
+                  {/* Additional contacts */}
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 rounded-full bg-teal-100 flex items-center justify-center flex-shrink-0">
                       <svg className="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -602,10 +626,9 @@ const Home = () => {
                     </div>
                     <div>
                       <h5 className="font-bold text-gray-900 mb-1">Telepon</h5>
-                      <p className="text-gray-600 text-sm sm:text-base">+62 812 3456 7890</p>
+                      <p className="text-gray-600 text-sm sm:text-base">+62 8136 3358 311</p>
                     </div>
                   </div>
-                  
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 rounded-full bg-teal-100 flex items-center justify-center flex-shrink-0">
                       <svg className="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -615,41 +638,6 @@ const Home = () => {
                     <div>
                       <h5 className="font-bold text-gray-900 mb-1">Email</h5>
                       <p className="text-gray-600 text-sm sm:text-base">info@arb-recruitment.co.id</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-full bg-teal-100 flex items-center justify-center flex-shrink-0">
-                      <svg className="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                      </svg>
-                    </div>
-                    <div>
-                      <h5 className="font-bold text-gray-900 mb-1">Jam Operasional</h5>
-                      <p className="text-gray-600 text-sm sm:text-base">
-                        Senin - Jumat: 08:00 - 17:00<br />
-                        Sabtu: 08:00 - 12:00<br />
-                        Minggu: Libur
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4 pt-4">
-                    <div className="w-12 h-12 rounded-full bg-teal-100 flex items-center justify-center flex-shrink-0">
-                      <svg className="w-6 h-6 text-teal-600" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                      </svg>
-                    </div>
-                    <div>
-                      <h5 className="font-bold text-gray-900 mb-1">Media Sosial</h5>
-                      <a 
-                        href="https://www.instagram.com/anugerah.rekanan/" 
-                        target="_blank" 
-                        rel="noreferrer"
-                        className="text-teal-600 hover:text-teal-700 text-sm sm:text-base font-medium"
-                      >
-                        @anugerah.rekanan
-                      </a>
                     </div>
                   </div>
                 </div>
@@ -666,6 +654,7 @@ const Home = () => {
           </div>
         </div>
       </section>
+
     </main>
   );
 };
