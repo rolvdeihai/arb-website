@@ -12,9 +12,23 @@ const Footer = () => {
             Ekosistem manajemen talenta terintegrasi dengan teknologi mutakhir untuk optimalisasi proses rekrutmen.
           </p>
           <div className="mt-4 flex gap-4">
-            <a href="#" className="text-gray-400 hover:text-white transition hover-lift">LinkedIn</a>
-            <a href="https://www.instagram.com/anugerah.rekanan/" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-white transition hover-lift">Instagram</a>
-            <a href="#" className="text-gray-400 hover:text-white transition hover-lift">Twitter</a>
+            {/* Menggunakan button untuk link yang belum ada tujuannya agar lolos cek ESLint */}
+            <button className="text-gray-400 hover:text-white transition hover-lift bg-transparent border-none cursor-pointer p-0 font-inherit">
+              LinkedIn
+            </button>
+            
+            <a 
+              href="https://www.instagram.com/anugerah.rekanan/" 
+              target="_blank" 
+              rel="noreferrer" 
+              className="text-gray-400 hover:text-white transition hover-lift"
+            >
+              Instagram
+            </a>
+            
+            <button className="text-gray-400 hover:text-white transition hover-lift bg-transparent border-none cursor-pointer p-0 font-inherit">
+              Twitter
+            </button>
           </div>
         </div>
 
@@ -43,7 +57,7 @@ const Footer = () => {
         <div className="text-center">
           <button
             onClick={() => navigate("/admin")}
-            className="inline-flex items-center gap-2 px-4 py-2 text-xs sm:text-sm text-gray-400 hover:text-white transition border border-gray-700 hover:border-gray-600 rounded-lg bg-gray-800/50 hover:bg-gray-800"
+            className="inline-flex items-center gap-2 px-4 py-2 text-xs sm:text-sm text-gray-400 hover:text-white transition border border-gray-700 hover:border-gray-600 rounded-lg bg-gray-800/50 hover:bg-gray-800 cursor-pointer"
             title="Admin Dashboard"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

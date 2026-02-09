@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -50,26 +50,35 @@ const Navbar = () => {
 
   const handleNavClick = (sectionId: string) => {
     closeMenu();
-    if (location.pathname !== '/') {
-      navigate('/');
-      setTimeout(() => {
-        const element = document.getElementById(sectionId);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }, 100);
-    } else {
+    
+    const scrollToElement = () => {
       const element = document.getElementById(sectionId);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // Offset untuk navbar fixed
+        const headerOffset = 80; 
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.scrollY - headerOffset;
+    
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        });
       }
+    };
+
+    if (location.pathname !== '/') {
+      navigate('/');
+      // Tunggu navigasi selesai baru scroll
+      setTimeout(scrollToElement, 100);
+    } else {
+      scrollToElement();
     }
   };
 
   return (
     <nav
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300
-        ${isScrolled ? "bg-white shadow-lg border-b border-gray-100" : "bg-transparent"}
+        ${isScrolled || isMenuOpen ? "bg-white shadow-lg border-b border-gray-100" : "bg-transparent"}
       `}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-8 py-4 flex items-center justify-between">
@@ -80,12 +89,13 @@ const Navbar = () => {
           onClick={() => {
             navigate("/");
             closeMenu();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
         >
           <img src="/logo.png" alt="ARB Logo" className="h-12 w-auto object-contain" />
           <span
             className={`text-lg sm:text-xl font-bold tracking-tight transition-colors duration-300
-              ${isScrolled ? "text-gray-900" : "text-white drop-shadow-text"}
+              ${isScrolled || isMenuOpen ? "text-gray-900" : "text-white drop-shadow-text"}
             `}
           >
             PT. ANUGRAH REKANAN BERSAMA
@@ -122,7 +132,7 @@ const Navbar = () => {
             setIsMenuOpen(!isMenuOpen);
           }}
           className={`md:hidden focus:outline-none z-50 relative
-            ${isScrolled ? "text-gray-900" : "text-white"}
+            ${isScrolled || isMenuOpen ? "text-gray-900" : "text-white"}
           `}
           aria-label="Toggle menu"
           aria-expanded={isMenuOpen}
@@ -152,25 +162,25 @@ const Navbar = () => {
           <div className="flex flex-col px-6 py-6 gap-4 text-gray-800 font-medium">
             <button 
               onClick={() => handleNavClick('about')} 
-              className="text-left hover:text-teal-600 transition py-2"
+              className="text-left hover:text-teal-600 transition py-2 border-b border-gray-100"
             >
               Tentang
             </button>
             <button 
               onClick={() => handleNavClick('proses')} 
-              className="text-left hover:text-teal-600 transition py-2"
+              className="text-left hover:text-teal-600 transition py-2 border-b border-gray-100"
             >
               Proses
             </button>
             <button 
               onClick={() => handleNavClick('lokasi')} 
-              className="text-left hover:text-teal-600 transition py-2"
+              className="text-left hover:text-teal-600 transition py-2 border-b border-gray-100"
             >
               Lokasi
             </button>
             <button 
               onClick={() => handleNavClick('faq')} 
-              className="text-left hover:text-teal-600 transition py-2"
+              className="text-left hover:text-teal-600 transition py-2 border-b border-gray-100"
             >
               FAQ
             </button>
