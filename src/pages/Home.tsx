@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-// Definisi komponen ContactForm secara lokal untuk menghindari error import
+// Definisi komponen ContactForm secara lokal
 const ContactForm = () => {
   return (
     <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
@@ -20,7 +20,7 @@ const ContactForm = () => {
           type="email" 
           id="email" 
           className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm p-3 border" 
-          placeholder="nama@email.com" 
+          placeholder="anugerah.anugerah2023@gmail.com" 
         />
       </div>
       <div>
@@ -54,6 +54,30 @@ const ContactForm = () => {
 const Home = () => {
   const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
+
+  // Data Anggota Tim
+  const teamMembers = [
+    {
+      name: "",
+      position: "Direktur Utama",
+      image: "img/Direktur utama.jpeg",
+    },
+    {
+      name: "",
+      position: "Human Resource Development",
+      image: "img/Human resource development.jpeg",
+    },
+    {
+      name: "",
+      position: "Regional Manager",
+      image: "img/Regional manager.jpeg",
+    },
+    {
+      name: "",
+      position: "Area Manager",
+      image: "img/AREA MANAGER.jpeg",
+    }
+  ];
 
   // LOGIC FOR NAVBAR TRANSPARENCY ON SCROLL
   useEffect(() => {
@@ -290,8 +314,46 @@ const Home = () => {
         </p>
       </section>
 
+      {/* TIM KAMI SECTION ADDED HERE */}
+      <section className="py-20 bg-teal-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl mb-4 animate-fadeInUp">Tim Kami</h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto animate-fadeInUp delay-100">
+              Profesional berdedikasi yang memimpin kesuksesan perusahaan kami.
+            </p>
+          </div>
+          {/* UPDATED GRID for Mobile: 2 columns (grid-cols-2) */}
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8">
+            {teamMembers.map((member, index) => (
+              <div
+                key={index}
+                className="group relative bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 animate-fadeInUp"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                {/* Adjusted height for mobile so it doesn't look too tall */}
+                <div className="relative h-40 sm:h-64 overflow-hidden">
+                   <div className="absolute inset-0 bg-teal-900 opacity-0 group-hover:opacity-20 transition-opacity duration-300 z-10"></div>
+                  <img 
+                    src={member.image} 
+                    alt={member.position} 
+                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                  />
+                </div>
+                {/* Adjusted padding and font sizes for mobile */}
+                <div className="p-3 sm:p-6 text-center">
+                  <h3 className="text-sm sm:text-lg font-bold text-gray-900 group-hover:text-teal-600 transition-colors">{member.name}</h3>
+                  <div className="h-1 w-8 sm:w-12 bg-teal-600 mx-auto my-2 sm:my-3 rounded-full"></div>
+                  <p className="text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">{member.position}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* PROSES REKRUTMEN */}
-      <section id="proses" className="mt-20 sm:mt-32 px-4 sm:px-8 py-10 sm:py-16 bg-teal-50">
+      <section id="proses" className="mt-20 sm:mt-32 px-4 sm:px-8 py-10 sm:py-16 bg-white">
         <h3 className="text-3xl sm:text-4xl font-extrabold text-gray-900 text-center animate-fadeInUp">
           Proses Rekrutmen
         </h3>
@@ -371,7 +433,6 @@ const Home = () => {
                     </div>
                   </div>
                   
-                  {/* ... other contact items ... */}
                   <div className="flex items-start gap-3">
                     <div className="w-10 h-10 rounded-full bg-teal-100 flex items-center justify-center flex-shrink-0">
                       <svg className="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -392,7 +453,7 @@ const Home = () => {
                     </div>
                     <div>
                       <p className="font-semibold text-gray-900">Email</p>
-                      <p className="text-gray-600 text-sm mt-1">info@arb-recruitment.co.id</p>
+                      <p className="text-gray-600 text-sm mt-1">anugerah.anugerah2023@gmail.com</p>
                     </div>
                   </div>
                 </div>
@@ -540,7 +601,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* NASIONAL PRESENCE / MAP SECTION (MOVED UP) */}
+      {/* NASIONAL PRESENCE / MAP SECTION */}
       <section className="py-20 sm:py-24 bg-white px-4 sm:px-8">
         <div className="max-w-7xl mx-auto text-center">
           <h3 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 animate-fadeInUp">
@@ -548,13 +609,11 @@ const Home = () => {
           </h3>
           
           <div className="relative w-full max-w-5xl mx-auto mt-12 sm:mt-16 group">
-            {/* Peta menggunakan gambar yang disediakan dengan efek blending */}
             <img 
               src="/peta.jpg" 
               alt="Peta Jangkauan Indonesia" 
               className="w-full h-auto object-contain mx-auto grayscale hover:grayscale-0 transition-all duration-700 mix-blend-multiply opacity-90"
             />
-            {/* Titik-titik overlay telah dihapus */}
           </div>
 
           {/* STATISTIK DI BAWAH PETA */}
@@ -583,7 +642,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* CONTACT SECTION (Stay at Bottom) */}
+      {/* CONTACT SECTION */}
       <section id="kontak" className="py-16 sm:py-20 bg-teal-50 px-4 sm:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 animate-fadeInUp">
@@ -637,7 +696,7 @@ const Home = () => {
                     </div>
                     <div>
                       <h5 className="font-bold text-gray-900 mb-1">Email</h5>
-                      <p className="text-gray-600 text-sm sm:text-base">info@arb-recruitment.co.id</p>
+                      <p className="text-gray-600 text-sm sm:text-base">anugerah.anugerah2023@gmail.com</p>
                     </div>
                   </div>
                 </div>
