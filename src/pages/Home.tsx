@@ -337,14 +337,6 @@ const Home = () => {
               </div>
             ))}
           </div>
-          <div className="text-center mt-12">
-            <button
-              onClick={() => navigate("/tim")}
-              className="inline-flex items-center text-teal-600 font-bold hover:text-teal-800 transition-colors"
-            >
-              Lihat Seluruh Tim →
-            </button>
-          </div>
         </div>
       </section>
 
