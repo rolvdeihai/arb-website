@@ -58,22 +58,22 @@ const Home = () => {
   // Data Anggota Tim
   const teamMembers = [
     {
-      name: "Nama Anggota Tim",
+      name: "Rian Afrianto",
       position: "Direktur Utama",
       image: "img/Direktur utama.jpeg",
     },
     {
-      name: "Nama Anggota Tim",
+      name: "Deiska",
       position: "Human Resource Development",
       image: "img/Human resource development.jpeg",
     },
     {
-      name: "Nama Anggota Tim",
+      name: "Edo ariyanto",
       position: "Regional Manager",
       image: "img/Regional manager.jpeg",
     },
     {
-      name: "Nama Anggota Tim",
+      name: "Martin Sulaiman",
       position: "Area Manager",
       image: "img/AREA MANAGER.jpeg",
     }
