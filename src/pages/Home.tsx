@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 // Definisi komponen ContactForm secara lokal
@@ -20,7 +20,7 @@ const ContactForm = () => {
           type="email" 
           id="email" 
           className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm p-3 border" 
-          placeholder="anugerah.anugerah2023@gmail.com" 
+          placeholder="nama@email.com" 
         />
       </div>
       <div>
@@ -53,43 +53,31 @@ const ContactForm = () => {
 
 const Home = () => {
   const navigate = useNavigate();
-  const [isScrolled, setIsScrolled] = useState(false);
+  // Variable isScrolled dan useEffect scroll dihapus karena tidak digunakan di JSX
 
   // Data Anggota Tim
   const teamMembers = [
     {
-      name: "",
+      name: "Nama Anggota Tim",
       position: "Direktur Utama",
       image: "img/Direktur utama.jpeg",
     },
     {
-      name: "",
+      name: "Nama Anggota Tim",
       position: "Human Resource Development",
       image: "img/Human resource development.jpeg",
     },
     {
-      name: "",
+      name: "Nama Anggota Tim",
       position: "Regional Manager",
       image: "img/Regional manager.jpeg",
     },
     {
-      name: "",
+      name: "Nama Anggota Tim",
       position: "Area Manager",
       image: "img/AREA MANAGER.jpeg",
     }
   ];
-
-  // LOGIC FOR NAVBAR TRANSPARENCY ON SCROLL
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   // Referral tracking
   useEffect(() => {
@@ -349,6 +337,14 @@ const Home = () => {
               </div>
             ))}
           </div>
+          <div className="text-center mt-12">
+            <button
+              onClick={() => navigate("/tim")}
+              className="inline-flex items-center text-teal-600 font-bold hover:text-teal-800 transition-colors"
+            >
+              Lihat Seluruh Tim →
+            </button>
+          </div>
         </div>
       </section>
 
@@ -453,7 +449,7 @@ const Home = () => {
                     </div>
                     <div>
                       <p className="font-semibold text-gray-900">Email</p>
-                      <p className="text-gray-600 text-sm mt-1">anugerah.anugerah2023@gmail.com</p>
+                      <p className="text-gray-600 text-sm mt-1">info@arb-recruitment.co.id</p>
                     </div>
                   </div>
                 </div>
@@ -696,7 +692,7 @@ const Home = () => {
                     </div>
                     <div>
                       <h5 className="font-bold text-gray-900 mb-1">Email</h5>
-                      <p className="text-gray-600 text-sm sm:text-base">anugerah.anugerah2023@gmail.com</p>
+                      <p className="text-gray-600 text-sm sm:text-base">info@arb-recruitment.co.id</p>
                     </div>
                   </div>
                 </div>
