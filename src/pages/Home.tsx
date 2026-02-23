@@ -68,12 +68,12 @@ const Home = () => {
       image: "img/Human resource development.jpeg",
     },
     {
-      name: "Edo ariyanto",
+      name: "Martin Sulaiman",
       position: "Regional Manager",
       image: "img/Regional manager.jpeg",
     },
     {
-      name: "Martin Sulaiman",
+      name: "Edo ariyanto",
       position: "Area Manager",
       image: "img/AREA MANAGER.jpeg",
     }
